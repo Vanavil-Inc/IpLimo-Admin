@@ -209,6 +209,9 @@ h2,
   position: absolute;
   top: 55%;
 }
+.cursor {
+  cursor: pointer;
+}
 
 @media (max-width: 1200px) {
   .h-text1 {

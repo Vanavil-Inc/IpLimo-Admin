@@ -7,6 +7,7 @@ import ls from "local-storage";
 import HttpRequest from "./HttpRequest";
 import Loader from "./Loader";
 import Alert from "./Alert";
+import NumberFormat from "react-number-format";
 
 let formData = {};
 class Login extends Component {
@@ -15,7 +16,8 @@ class Login extends Component {
     this.state = {
       home: ls.get("isLogin") === "true" ? true : false,
       isLoading: false,
-      msg: ""
+      msg: "",
+      mobileNo: ""
     };
     this.child = React.createRef();
   }
@@ -24,12 +26,24 @@ class Login extends Component {
     const target = event.target;
     const value = target.value;
     const name = target.name;
-    console.log(value + " = " + name);
+
+    if (name === "mobileNo") {
+      console.log(value + "==" + this.state.phoneNumber.length);
+      if (this.state.phoneNumber.length < 10) {
+        this.setState({
+          phoneNumber: event.target.value
+        });
+        //formData[name] = this.state.phoneNumber;
+      }
+    } else {
+      formData[name] = value;
+    }
 
     // let { formData } = this.state;
-    formData[name] = value;
   };
   loginAdmin = e => {
+    formData["mobileNo"] = this.state.mobileNo;
+    console.log(formData);
     e.preventDefault();
     try {
       if (
@@ -69,6 +83,17 @@ class Login extends Component {
     }
   };
 
+  // mobileNumber(e) {
+  //   const re = /[0-9A-F:]+/g;
+  //   if (!re.test(e.key)) {
+  //     e.preventDefault();
+  //     console.log("====" + e.key);
+  //   } else {
+  //     console.log("====" + e.key);
+  //     formData[e.target.name] = e.target.value;
+  //   }
+  // }
+
   render() {
     // const { UserId, Password, validate } = this.state;
     console.log(" ?REDIRECT HOME " + this.state.home);
@@ -87,13 +112,16 @@ class Login extends Component {
             <Alert ref={this.child} />
             <Form.Group as={Row} controlId="loginForm">
               <Col className="ml-4 mr-4">
-                <Form.Control
-                  type="number"
-                  name="mobileNo"
-                  pattern="[0-9]*"
+                <NumberFormat
+                  class="form-control"
+                  prefix={"$"}
+                  format="##### #####"
                   placeholder={Util.enter_phone_number}
-                  maxLength="11"
-                  onChange={this.handleInputChange}
+                  mask=" "
+                  onValueChange={values => {
+                    const { formattedValue, value } = values;
+                    this.setState({ mobileNo: value });
+                  }}
                 />
               </Col>
             </Form.Group>
