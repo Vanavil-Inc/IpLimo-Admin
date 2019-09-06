@@ -1,13 +1,12 @@
 import axios from "axios";
 
-//const BASE_URL = "http://localhost:8082/api";
-const BASE_URL = "http://34.229.17.37:8083/api";
+//const BASE_URL = "http://localhost:8082/admin";
+const BASE_URL = "http://54.90.235.248:8082/admin";
 
 let Config = {
   headers: {
     "Content-Type": "application/json;charset=UTF-8",
     "Access-Control-Allow-Origin": "*"
-    
   }
 };
 
