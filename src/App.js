@@ -9,7 +9,6 @@ export default class App extends Component {
     ls.set("foo1", "bar");
   }
   render() {
-    console.log("APP>JS ");
 
     ls.set("foo", "bar");
     return <Router />;

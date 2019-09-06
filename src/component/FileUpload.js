@@ -40,7 +40,7 @@ class FileUpload extends Component {
     try {
       if (formData !== undefined && this.state.filePath !== null) {
         HttpRequest.httpPOST("/shiftupload", formData).then(data => {
-          console.log(data);
+      
           formData.delete("file");
           this.setState({
             filePath: null,
@@ -61,7 +61,7 @@ class FileUpload extends Component {
           }
         });
       } else {
-        console.log("Non Empty block");
+       
         //error
         this.setState({
           isLoading: false,
@@ -70,7 +70,7 @@ class FileUpload extends Component {
         this.child.current.enableError(Util.CHOOSE_FILE);
       }
     } catch (err) {
-      console.log(err);
+      //console.log(err);
     }
   };
 

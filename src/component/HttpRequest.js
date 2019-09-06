@@ -13,27 +13,19 @@ let Config = {
 export default class HttpRequest {
   static httpGET(url) {
     return axios.get(BASE_URL + url, Config).then(res => {
-      console.log("GET DATA");
-      console.log(res.data);
       return res.data;
     });
   }
   static httpSampleGET(url) {
     return axios.get(url, Config).then(res => {
-      console.log("GET DATA");
-      console.log(res.data);
       return res.data;
     });
   }
 
   static async httpPOST(url, params) {
-    console.log(params);
-    console.log(url);
     return axios
       .post(BASE_URL + url, params, Config)
       .then(function(res) {
-        console.log("POST DATA");
-        console.log(res.data);
         return res.data;
       })
       .catch(function(error) {

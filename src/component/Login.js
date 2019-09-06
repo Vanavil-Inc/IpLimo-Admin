@@ -43,7 +43,7 @@ class Login extends Component {
   };
   loginAdmin = e => {
     formData["mobileNo"] = this.state.mobileNo;
-    console.log(formData);
+   
     e.preventDefault();
     try {
       if (
@@ -55,7 +55,7 @@ class Login extends Component {
         });
 
         HttpRequest.httpPOST("/login", formData).then(data => {
-          console.log(data);
+        
           document.getElementById("loginForm").reset();
           formData = {};
 
@@ -75,11 +75,11 @@ class Login extends Component {
         });
       } else {
         //error
-        console.log("error");
+       
         this.child.current.enableError(Util.ENTER_PH_NO_PWD);
       }
     } catch (err) {
-      console.log(err);
+      //console.log(err);
     }
   };
 
@@ -96,7 +96,7 @@ class Login extends Component {
 
   render() {
     // const { UserId, Password, validate } = this.state;
-    console.log(" ?REDIRECT HOME " + this.state.home);
+  
     if (this.state.home === true) {
       return <Redirect to="/home" />;
     }

@@ -9,7 +9,7 @@ export default class Layout extends Component {
     };
   }
   Logout = () => {
-    console.log("CAll logout in layout");
+   
     ls.clear();
     this.setState({
       isLogIn: false

@@ -27,8 +27,6 @@ class Home extends Component {
   }
 
   fileUploadResult = result => {
-    console.log("Shift detal from child file upload");
-    console.log(result);
     this.setState({
       scheduleResponse: result,
       isTrue: true
